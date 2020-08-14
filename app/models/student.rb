@@ -1,4 +1,6 @@
 class Student < ActiveRecord::Base
+    has_many :grade_levels
+    has_many :teachers, through: :teacher_students
 
     def full_name
         self.first_name + " " + self.last_name
@@ -7,6 +9,9 @@ class Student < ActiveRecord::Base
     def self.all_in_grade(grade)
         self.all.filter {|ele| ele.grade_level == grade}
     end
+
+    
+
 
 
 
